@@ -1,45 +1,79 @@
-# Merging data from train & test
-x <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/train/X_train.txt", widths = 14),
-           read.fwf("D:/Workspace R/UCI HAR Dataset/test/X_test.txt", widths = 14))
-y <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/train/y_train.txt", widths = 14),
-           read.fwf("D:/Workspace R/UCI HAR Dataset/test/y_test.txt", widths = 14))
+#1.Merges the training and the test sets to create one data set.
+activity <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/y_test.txt", widths = 14),
+           read.fwf("D:/Workspace R/UCI HAR Dataset/train/y_train.txt", widths = 14))
 
-x$y = y[,]
-rs <- x
+x <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/X_test.txt", widths = 14),
+           read.fwf("D:/Workspace R/UCI HAR Dataset/train/X_train.txt", widths = 14))
 
-# Calculating mean of each activity
-meanAct1 <- mean(as.numeric(rs[rs$y == 1,]$V1))
-meanAct2 <- mean(as.numeric(rs[rs$y == 2,]$V1))
-meanAct3 <- mean(as.numeric(rs[rs$y == 3,]$V1))
-meanAct4 <- mean(as.numeric(rs[rs$y == 4,]$V1))
-meanAct5 <- mean(as.numeric(rs[rs$y == 5,]$V1))
-meanAct6 <- mean(as.numeric(rs[rs$y == 6,]$V1))
+body_acc_x <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/body_acc_x_test.txt", widths = 14), 
+                    read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/body_acc_x_train.txt", widths = 14))
 
-# Calculating standard deivation of each activity
-stdAct1 <- sd(as.numeric(rs[rs$y == 1,]$V1))
-stdAct2 <- sd(as.numeric(rs[rs$y == 2,]$V1))
-stdAct3 <- sd(as.numeric(rs[rs$y == 3,]$V1))
-stdAct4 <- sd(as.numeric(rs[rs$y == 4,]$V1))
-stdAct5 <- sd(as.numeric(rs[rs$y == 5,]$V1))
-stdAct6 <- sd(as.numeric(rs[rs$y == 6,]$V1))
+body_acc_y <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/body_acc_y_test.txt", widths = 14), 
+                    read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/body_acc_y_train.txt", widths = 14))
 
-# create data frame
-activity <- c(1,2,3,4,5,6)
-mean <- c(meanAct1, meanAct2, meanAct3, meanAct4, meanAct5, meanAct6)
-standardDeivation <- c(stdAct1, stdAct2, stdAct3, stdAct4, stdAct5, stdAct6)
-rs1 <- data.frame(activity, mean, standardDeivation)
+body_acc_z <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/body_acc_z_test.txt", widths = 14), 
+                    read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/body_acc_z_train.txt", widths = 14))
 
-# add average of each subject 
-rs2 <- rs1
-rs2$Average <- c(mean(c(rs1[rs1$activity == 1,]$mean, rs1[rs1$activity == 1,]$standardDeivation)),
-                 mean(c(rs1[rs1$activity == 2,]$mean, rs1[rs1$activity == 2,]$standardDeivation)),
-                 mean(c(rs1[rs1$activity == 3,]$mean, rs1[rs1$activity == 3,]$standardDeivation)),
-                 mean(c(rs1[rs1$activity == 4,]$mean, rs1[rs1$activity == 4,]$standardDeivation)),
-                 mean(c(rs1[rs1$activity == 5,]$mean, rs1[rs1$activity == 5,]$standardDeivation)),
-                 mean(c(rs1[rs1$activity == 6,]$mean, rs1[rs1$activity == 6,]$standardDeivation)))
+body_gyro_x <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/body_gyro_x_test.txt", widths = 14), 
+                     read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/body_gyro_x_train.txt", widths = 14))
 
-# add a row to calculate mean of each variable
-rs3 <- rbind(rs2, c("",mean(rs2$mean), mean(rs2$standardDeivation), mean(rs2$Average)))
+body_gyro_y <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/body_gyro_y_test.txt", widths = 14), 
+                     read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/body_gyro_y_train.txt", widths = 14))
 
-# write to file the rs
-write.table(rs3,"DataAndCleaning_CoursePRoject.txt", row.names = FALSE)
+
+body_gyro_z <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/body_gyro_z_test.txt", widths = 14), 
+                     read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/body_gyro_z_train.txt", widths = 14))
+
+total_acc_x <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt", widths = 14), 
+                     read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/total_acc_x_train.txt", widths = 14))
+
+total_acc_y <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/total_acc_y_test.txt", widths = 14), 
+                     read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/total_acc_y_train.txt", widths = 14))
+
+total_acc_z <- rbind(read.fwf("D:/Workspace R/UCI HAR Dataset/test/Inertial Signals/total_acc_z_test.txt", widths = 14), 
+                     read.fwf("D:/Workspace R/UCI HAR Dataset/train/Inertial Signals/total_acc_z_train.txt", widths = 14))
+
+dtColName <- c("activity", "x", 
+               "body_acc_x", "body_acc_y", "body_acc_z", 
+               "body_gyro_x", "body_gyro_y", "body_gyro_z", 
+               "total_acc_x", "total_acc_y", "total_acc_z")
+
+rs <- data.frame(activity,x,
+                 body_acc_x, body_acc_y, body_acc_z, 
+                 body_gyro_x, body_gyro_y, body_gyro_z, 
+                 total_acc_x, total_acc_y, total_acc_z)
+
+colnames(rs) <- dtColName
+
+
+#2. Extracts only the measurements on the mean and standard deviation for each measurement.
+meanOfMeasurement <- colMeans(rs, TRUE)
+sdOfMeasurement <- apply(rs, 2,FUN = sd)
+rs <- rbind(rs, meanOfMeasurement)
+rs <- rbind(rs, sdOfMeasurement)
+
+#3 Uses descriptive activity names to name the activities in the data set
+#4 Appropriately labels the data set with descriptive variable names.
+
+rs$activity[rs$activity == 1] <- "WALKING"
+rs$activity[rs$activity == 2] <- "WALKING_UPSTAIRS"
+rs$activity[rs$activity == 3] <- "WALKING_DOWNSTAIRS"
+rs$activity[rs$activity == 4] <- "SITTING"
+rs$activity[rs$activity == 5] <- "STANDING"
+rs$activity[rs$activity == 6] <- "LAYING"
+
+#5 From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+activities <- c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING")
+
+walkingAvg <- colMeans((newRs[rs$activity == "WALKING",][,3:11]),na.rm = TRUE)
+walkingUpstairAvg <- colMeans((rs[rs$activity == "WALKING_UPSTAIRS",][,3:11]),na.rm = TRUE)
+walkingDownstairAvg <- colMeans((rs[rs$activity == "WALKING_DOWNSTAIRS",][,3:11]),na.rm = TRUE)
+sittingAvg <- colMeans((rs[rs$activity == "SITTING",][,3:11]),na.rm = TRUE)
+standingAvg <- colMeans((rs[rs$activity == "STANDING",][,3:11]),na.rm = TRUE)
+layingAvg <- colMeans((rs[rs$activity == "LAYING",][,3:11]),na.rm = TRUE)
+newRs <- rbind(walkingAvg, walkingUpstairAvg, walkingDownstairAvg, sittingAvg, standingAvg, layingAvg)
+rsTbl <- data.frame(newRs, row.names = activities)
+rsTbl$averageSubject <- rowMeans(rsTbl[,2:6])
+rsTbl$activities <- activities
+write.table(rsTbl,"D:/GettingAndCleaningExercise.txt", row.names = FALSE)
+
