@@ -30,9 +30,12 @@ fBodyAccJerkMag
 fBodyGyroMag
 fBodyGyroJerkMag
 
+File Description 
+=================
+
 File "GettingAndCleaningExercise.txt" contains mean, average of each variable for each activity and mean of each subject. Following are meaning of columns:
 
-* ACTIVITY 
+## ACTIVITY 
 Activities in daily
 1 WALKING
 2 WALKING_UPSTAIRS
@@ -41,7 +44,7 @@ Activities in daily
 5 STANDING
 6 LAYING
 
-* VARIABLES
+## VARIABLES
 "body_acc_x"  : the mean of "body_acc_x" for each activity
 "body_acc_y"  : the mean of "body_acc_y" for each activity
 "body_acc_z"  : the mean of "body_acc_z" for each activity
