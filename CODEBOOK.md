@@ -45,14 +45,14 @@ Activities in daily
 6 LAYING
 
 ## VARIABLES
-"body_acc_x"  : the mean of "body_acc_x" for each activity
-"body_acc_y"  : the mean of "body_acc_y" for each activity
-"body_acc_z"  : the mean of "body_acc_z" for each activity
-"body_gyro_x" : the mean of "body_gyro_x" for each activity
-"body_gyro_y" : the mean of "body_gyro_y" for each activity
-"body_gyro_z" : the mean of "body_gyro_z" for each activity
-"total_acc_x" : the mean of "total_acc_x" for each activity
-"total_acc_y" : the mean of "total_acc_y" for each activity
-"total_acc_z" : the mean of "total_acc_z" for each activity
-"averageSubject": the average of all variables for each activity
-"activities" : description of each activity
+1. "body_acc_x"  : the mean of "body_acc_x" for each activity
+2. "body_acc_y"  : the mean of "body_acc_y" for each activity
+3. "body_acc_z"  : the mean of "body_acc_z" for each activity
+4. "body_gyro_x" : the mean of "body_gyro_x" for each activity
+5. "body_gyro_y" : the mean of "body_gyro_y" for each activity
+6. "body_gyro_z" : the mean of "body_gyro_z" for each activity
+7. "total_acc_x" : the mean of "total_acc_x" for each activity
+8. "total_acc_y" : the mean of "total_acc_y" for each activity
+9. "total_acc_z" : the mean of "total_acc_z" for each activity
+10. "averageSubject": the average of all variables for each activity
+11. "activities" : description of each activity
